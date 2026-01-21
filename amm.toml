@@ -1,0 +1,19 @@
+# AMM 配置文件
+
+# 空闲检测阈值 (毫秒)，用户无操作超过此时间才触发
+idle_threshold_ms = 3000
+
+# 注入间隔 (毫秒)
+interval_ms = 2000
+
+# 间隔抖动 (毫秒)，实际间隔 = interval_ms + random(0, jitter_ms)
+jitter_ms = 5000
+
+# 移动模式: ping_pong | micro_jitter | random_walk_box
+move_pattern = "ping_pong"
+
+# 退出热键
+hotkey_exit = "Ctrl+Alt+End"
+
+# 全屏应用时暂停
+pause_on_fullscreen = true
