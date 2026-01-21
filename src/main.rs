@@ -136,7 +136,9 @@ fn main() {
         nid.uCallbackMessage = WM_TRAYICON;
         nid.hIcon = if icon == 0 { LoadIconW(0 as _, IDI_APPLICATION) } else { icon as _ };
         let tip = to_wide("AMM - 运行中");
-        ptr::copy_nonoverlapping(tip.as_ptr(), nid.szTip.as_mut_ptr(), tip.len().min(128));
+        for (i, &c) in tip.iter().take(127).enumerate() {
+            nid.szTip[i] = c;
+        }
         Shell_NotifyIconW(NIM_ADD, &nid);
         
         // 工作线程
